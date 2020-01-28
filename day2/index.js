@@ -1,5 +1,9 @@
 let namePerson = prompt('Введите имя');
-    namePerson.match(/Артем/) && namePerson.match(/тем$/) ? alert(namePerson+ 'директор') : namePerson.match(/Макс/) && namePerson.match(/им$/) ? alert(namePerson+ ' препод') : alert(namePerson + ' студент');
+
+    namePerson.match(/Артем/) && namePerson.match(/тем$/) 
+    ? alert(namePerson+ 'директор') 
+    : namePerson.match(/Макс/) && namePerson.match(/им$/) 
+    ? alert(namePerson+ ' препод') : alert(namePerson + ' студент');
 // namePerson === 'Art' ? console.log('dir') : namePerson === 'Max' ? console.log('prep') : console.log('stud');
 
 let lang = 'eng',
@@ -41,3 +45,11 @@ function switchDaysLang (arrEng) {
 }
 switchDaysLang(arrRus);
 switchDaysLang(arrEng);
+
+// let a = prompt('en or ru?');
+// let lang = [
+//     ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+//     ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+// ];
+// // consoleen.log(en);
+// a === 'ru' ? (console.log(lang[0])) : 'en' ? (console.log(lang[1])) : console.log('Язык по умолчанию - русский. Deafult language is russian, update page to choose again');
