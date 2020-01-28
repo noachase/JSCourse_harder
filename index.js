@@ -1,8 +1,43 @@
-let num = 266219,
-    multipliedDigits = num.toString().split('').reduce((a, b) => a * b, 1),
-    multipliedByThree = multipliedDigits**3,
-    firstTwoDigits = multipliedByThree.toString().substr(0, 2);
+let namePerson = prompt('Введите имя');
+    namePerson.match(/Артем/) && namePerson.match(/тем$/) ? alert(namePerson+ 'директор') : namePerson.match(/Макс/) && namePerson.match(/им$/) ? alert(namePerson+ ' препод') : alert(namePerson + ' студент');
+// namePerson === 'Art' ? console.log('dir') : namePerson === 'Max' ? console.log('prep') : console.log('stud');
 
-console.log(`Результат: ${multipliedDigits}`);
-console.log(`Результат **3: ${multipliedByThree}`);
-console.log(`Первые 2 цифры: ${firstTwoDigits}`);
+let lang = 'eng',
+    daysRus = 'Ponedelnik, Vtornik',
+    daysEng = 'Monday, Tuesday';
+
+if (lang === 'ru'){
+    console.log(daysRus);
+} else if(lang === 'eng') {
+    console.log(daysEng);
+}
+
+switch (lang) {
+    case 'ru':
+        console.log(daysRus)
+        break;
+    case 'eng':
+        console.log(daysEng)
+        break;
+}
+
+let aaa = [
+    ['Ponedelnik', 'Vtornik'],
+    ['Monday', 'tuesday']
+];
+
+let arrRus = aaa[0],
+    arrEng = aaa[1];
+
+function switchDaysLang (arrRus) {
+    arrRus.forEach(el => {
+        console.log(el);
+    });
+}
+function switchDaysLang (arrEng) {
+    arrEng.forEach(el => {
+        console.log(el);
+    });
+}
+switchDaysLang(arrRus);
+switchDaysLang(arrEng);
