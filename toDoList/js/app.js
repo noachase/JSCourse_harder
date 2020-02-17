@@ -39,7 +39,7 @@ document.addEventListener('keyup', function(event) {
         const toDo = input.value;
         console.log(toDo);
         if (toDo) {
-            addToDo(toDo);
+            addToDo(toDo, id, false, false);
 
             listStorage.push({
                 name : toDo,
@@ -47,10 +47,19 @@ document.addEventListener('keyup', function(event) {
                 done : false,
                 trash : false
             });
+            console.log(listStorage)
+
         }
         input.value = '';
     }
 })
+
+
+function removeToDo(el) {
+    el.parentNode.parentNode.removeChild(el.parentNode);
+    
+    listStorage[el.id].trash = true;
+}
 
 function completeToDo (el) {
     el.classlist.toggle(check);
@@ -60,14 +69,9 @@ function completeToDo (el) {
     listStorage[el.id].done = listStorage[el.id].done ? false : true;
 }
 
-function removeToDo(el) {
-    el.parentNode.parentNode.removeChild(el.parentNode);
-
-    listStorage[el.id].trash = true;
-}
-
 list.addEventListener('click', function(event) {
     const el = event.target;
+    console.log(el)
     const elJob = el.attributes.job.value;
 
     if(elJob == 'complete'){
