@@ -7,8 +7,28 @@ const check = 'fa-check-circle';
 const uncheck = 'fa-circle-thin';
 const linethrough = 'lineThrough';
 
-let listStorage = [], 
+let listStorage, id;
+let data = localStorage.getItem('TODO');
+
+if (data) {
+    listStorage = JSON.parse(data);
+    id = listStorage.length;
+    loadlist(listStorage);
+}else{
+    listStorage = [];
     id = 0;
+}
+
+function loadlist(array) {
+    array.forEach(function(item){
+        addToDo(item.name, item.id, item.done, item.trash);
+    })
+}
+
+clear.addEventListener('click', function(){
+    localStorage.clear();
+    location.reload();
+})
 
 const options = {weekday: 'long', month: 'short', day: 'numeric'};
 const today = new Date();
@@ -48,7 +68,8 @@ document.addEventListener('keyup', function(event) {
                 trash : false
             });
             console.log(listStorage)
-
+            localStorage.setItem('TODO', JSON.stringify(listStorage));
+            id++;
         }
         input.value = '';
     }
@@ -59,12 +80,15 @@ function removeToDo(el) {
     el.parentNode.parentNode.removeChild(el.parentNode);
     
     listStorage[el.id].trash = true;
+    
 }
 
 function completeToDo (el) {
-    el.classlist.toggle(check);
-    el.classlist.toggle(uncheck);
-    el.parentNode.querySelector('.text').classlist.toggle(linethrough);
+    
+    console.log(el.classlist)
+    el.classList.toggle(check);
+    el.classList.toggle(uncheck);
+    el.parentNode.querySelector('.text').classList.toggle(linethrough);
 
     listStorage[el.id].done = listStorage[el.id].done ? false : true;
 }
@@ -79,6 +103,7 @@ list.addEventListener('click', function(event) {
     }else if(elJob == 'delete'){
         removeToDo(el);
     }
-})
+    localStorage.setItem('TODO', JSON.stringify(listStorage));
+});
 
 
