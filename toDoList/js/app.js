@@ -57,7 +57,7 @@ function addToDo (toDo, id, done, trash) {
 document.addEventListener('keyup', function(event) {
     if (event.keyCode == 13) {
         const toDo = input.value;
-        console.log(toDo);
+        // console.log(toDo);
         if (toDo) {
             addToDo(toDo, id, false, false);
 
@@ -67,7 +67,7 @@ document.addEventListener('keyup', function(event) {
                 done : false,
                 trash : false
             });
-            console.log(listStorage)
+            // console.log(listStorage)
             localStorage.setItem('TODO', JSON.stringify(listStorage));
             id++;
         }
@@ -85,7 +85,7 @@ function removeToDo(el) {
 
 function completeToDo (el) {
     
-    console.log(el.classlist)
+    // console.log(el.classlist)
     el.classList.toggle(check);
     el.classList.toggle(uncheck);
     el.parentNode.querySelector('.text').classList.toggle(linethrough);
@@ -95,7 +95,7 @@ function completeToDo (el) {
 
 list.addEventListener('click', function(event) {
     const el = event.target;
-    console.log(el)
+    // console.log(el)
     const elJob = el.attributes.job.value;
 
     if(elJob == 'complete'){
